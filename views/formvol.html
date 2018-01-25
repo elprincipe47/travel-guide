@@ -1,0 +1,48 @@
+<section class="tour section-wrapper container" >
+    <form (submit) = "addVolInfo()">
+        <h2 class="" style="color:black">choose your flight</h2>
+        <br>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="input-group">
+                    <input type="text" [(ngModel)] = "depart" name="depart" class="form-control border-radius border-right" placeholder="De"/>
+                    <span class="input-group-addon border-radius custom-addon">
+                <i class="ion-ios-calendar"></i>
+              </span>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="input-group">
+                    <input type="text" [(ngModel)] = "arrive" name="arrive" class="form-control border-radius border-right" placeholder="A"/>
+                    <span class="input-group-addon border-radius custom-addon">
+						<i class="ion-ios-calendar"></i>
+					</span>
+                </div>
+            </div>
+            <div><br><br><br><br>
+                <div class="col-md-3 col-sm-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-radius border-right" placeholder="Départ"/>
+                        <span class="input-group-addon border-radius custom-addon">
+						<i class="ion-ios-calendar"></i>
+					</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-radius border-right" placeholder="Arrivé"/>
+                        <span class="input-group-addon border-radius custom-addon">
+              <i class="ion-ios-calendar"></i>
+            </span>
+                    </div>
+                </div>
+                <div> <br><br><br><br>
+                    <div class="col-md-3 col-sm-6">
+                        <button (click)="addVolInfo()" class="btn btn btn-success">show detail</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

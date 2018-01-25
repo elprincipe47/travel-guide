@@ -1,20 +1,16 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <section class="tour section-wrapper container" >
-    <form ng-submit="submitHeb()">
-        <h2 class="" style="color:white"> choisir une destination </h2>
+    <form ng-submit="submitVol()">
+        <h2 class="" style="color:white">choisir un vol</h2>
         <br>
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="input-group">
-                    <input type="text"  ng-model ="heb.country" name="country" class="form-control border-radius border-right" placeholder="Pays" list = "countries" />
+                    <input type="text"  ng-model ="vol.depart" name="depart" class="form-control border-radius border-right" placeholder="De" list = "cities" />
                    <datalist id="cities">
-                       <option ng-repeat="x in villes | filter : heb.country" value="{{x.city}}">{{x.city}}</option>
+                       <option ng-repeat="x in villes" value="{{x.city}}">{{x.city}} {{x.name}}({{x.country}})</option>
 
                    </datalist>
-                    <datalist id="countries">
-                        <option ng-repeat="x in villes | unique: 'country'" value="{{x.country}}">{{x.country}}</option>
-
-                    </datalist>
                     <span class="input-group-addon border-radius custom-addon">
                 <i class="ion-ios-calendar"></i>
               </span>
@@ -23,7 +19,7 @@
 
             <div class="col-md-3 col-sm-6">
                 <div class="input-group">
-                    <input type="text" ng-model = "heb.city" name="city" class="form-control border-radius border-right" placeholder="Ville" list = "cities" />
+                    <input type="text" ng-model = "vol.arrive" name="arrive" class="form-control border-radius border-right" placeholder="A" list = "cities" />
 
                     <span class="input-group-addon border-radius custom-addon">
 						<i class="ion-ios-calendar"></i>
@@ -57,7 +53,7 @@
             <div> <br><br><br><br>
                 <div class="col-md-3 col-sm-6">
                     <div class="input-group">
-                        <input type="text" ng-model = "heb.date_depart" name="date_depart" class="form-control border-radius border-right" placeholder="Date de Départ"  />
+                        <input type="text" ng-model = "vol.date_depart" name="date_depart" class="form-control border-radius border-right" placeholder="Date de Départ"  />
                         <span class="input-group-addon border-radius custom-addon">
 						<i class="ion-ios-calendar"></i>
 					</span>
@@ -65,7 +61,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="input-group">
-                        <input type="text" ng-model = "heb.date_arrive" name="date_arrive" class="form-control border-radius border-right" placeholder="Date de D'arrivée"  />
+                        <input type="text" ng-model = "vol.date_arrive" name="date_arrive" class="form-control border-radius border-right" placeholder="Date de D'arrivée"  />
                         <span class="input-group-addon border-radius custom-addon">
 						<i class="ion-ios-calendar"></i>
 					</span>
@@ -77,7 +73,7 @@
             </div>
                 <div> <br><br><br><br>
                     <div class="col-md-3 col-sm-6">
-                        <button type="submit" class="btn btn btn-success">Afficher les résultats</button>
+                        <button type="submit" class="btn btn btn-success">Afficher les vols</button>
                     </div>
                 </div>
             </div>

@@ -11,15 +11,16 @@
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.min.js"></script>
 
-      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-collapse.js"></script>
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
     <!--  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">-->
@@ -56,16 +57,16 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html" title="HOME"><i class="ion-paper-airplane"></i> euro <span>travel</span></a>
+        <a class="navbar-brand" href="index.html" title="HOME"><i class="ion-paper-airplane"></i> Travel <span>Guide</span></a>
       </div> <!-- /.navbar-header -->
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li ><a href="#/">Home</a></li>
+          <li ><a href="#/">Acceuil</a></li>
           <li><a href="#/voles">voles</a></li>
-          <li><a href="services.html">services</a></li>
-          <li><a href="contact.html">contact</a></li>
+          <li><a href="#/hebergement">Hebergement</a></li>
+          <li><a href="contact.html">Informations générales</a></li>
         </ul> <!-- /.nav -->
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
@@ -107,7 +108,7 @@
 
   </body>
 <script>
-    var app = angular.module('myApp', ['ngRoute']);
+    var app = angular.module('myApp', ['ngRoute','angular.filter']);
     app.config(function ($routeProvider) {
         $routeProvider.when('/', {
             templateUrl: '/formvol.html',
@@ -116,6 +117,14 @@
         }).when('/voles', {
             templateUrl: '/vols.html',
             controller: 'afficherVoles'
+
+        }).when('/hebergement', {
+            templateUrl: '/formheb.html',
+            controller: 'hebform'
+
+        }).when('/hebresults', {
+            templateUrl: '/hebresults.html',
+            controller: 'afficherHebergement'
 
         })
     });
@@ -128,6 +137,8 @@
            // $scope.list = $scope.villes;
 
         });
+
+
       //  console.log(villes);
         $scope.submitVol = function() {
             $http.post("/api/vol", $scope.vol).success(function (response) {
@@ -140,6 +151,29 @@
             });
         };
     });
+    app.controller('hebform', function($scope, $http,$location,Model) {
+        //   $scope.vols={};
+        $scope.villes=new Array;
+        $http.get("/airports.json").success(function (response)
+        {
+            $scope.villes = response.koko ;
+            // $scope.list = $scope.villes;
+
+        });
+
+
+        //  console.log(villes);
+        $scope.submitHeb = function() {
+            $http.post("/api/heb", $scope.heb).success(function (response) {
+
+
+                Model.setHeb(response);
+                console.log(response);
+                window.location.href="#/hebresults";
+
+            });
+        };
+    });
     app.controller('afficherVoles', function($scope, $http,$location,Model) {
 
         $scope.$watch(function ()
@@ -148,11 +182,19 @@
             $scope.voles = Model.getVoles();
         });
     });
+    app.controller('afficherHebergement', function($scope, $http,$location,Model) {
+
+        $scope.$watch(function ()
+        {
+            $scope.hebergement = Model.getHeb();
+        });
+    });
 
     app.factory('Model', function () {
 
         var data = {
-            voles: ''
+            voles: '',
+            hebergement : ''
         };
 
         return {
@@ -161,11 +203,29 @@
             },
             setVoles: function (voles) {
                 data.voles= voles;
+            },
+            getHeb: function () {
+                return data.hebergement;
+            },
+            setHeb: function (Heb) {
+                data.hebergement= Heb;
             }
+
         };
     });
 
 </script>
+  <script>
+      $(function() {
+          $( "#datepicker" ).datepicker({
+              dateFormat : 'mm/dd/yy',
+              changeMonth : true,
+              changeYear : true,
+              yearRange: '-100y:c+nn',
+              maxDate: '-1d'
+          });
+      });
 
+  </script>
 
 </html>

@@ -1,18 +1,43 @@
 <section class="tour section-wrapper container" style="color:black;">
     <div class="col-xs-12 col-md-8 " style="align:center;">
-    <div class="panel panel-default " ng-repeat="vol in voles.key">
+
+        <div class="product-right-grids" ng-repeat="heb in hebergement " style="background-color: white;color: black;">
+            <div class="product-right-top">
+                <div class="p-left">
+                    <div class="p-right-img p-right-img2" style="background: url({{heb.image}}) no-repeat 0px 0px;">
+                        <a href="{{heb.lien}}"> </a>
+                    </div>
+                </div>
+                <div class="p-right">
+                    <div class="col-md-6 p-right-left">
+                        <a href="{{heb.lien}}">{{heb.nom}}</a>
+                        <p>{{heb.location}}</p>
+                        <p>{{heb.description}}</p>
+                    </div>
+                    <div class="col-md-6 p-right-right">
+                        <h6>Rating : {{heb.rating}}</h6>
+                        <div class="clearfix"> </div>
+                        <span class="p-offer">{{heb.prix}}</span>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    <!--<div class="panel panel-default " ng-repeat="vol in hebergement">
 
         <div class="panel-body">
 
 
                                     <section class="list-left text-center">
-                                    <h4  class="title">{{ vol.allee.aeroport_depart}}  {{ vol.allee.aeroport_arrivee}} </h4>
-                                        <h5>{{ vol.allee.dureevol}}</h5>
+                                    <h4  class="title">{{ vol.nom}}  </h4>
+                                        <h5>{{ vol.location}}</h5>
                                     <p class="catpath">vol numéro : {{ vol.allee.numvol }}</p>
                                         <h5>{{ vol.allee.companie}}</h5>
 
                                     </section>
                                   <hr>
+
                                 <section class="list-left text-center">
                                     <h4  class="title">{{ vol.retour.aeroport_depart}}  {{ vol.retour.aeroport_arrivee}} </h4>
                                     <h5>{{ vol.retour.dureevol}}</h5>
@@ -32,188 +57,85 @@
 
         </div>
 
+
     </div>
-    </div>
-    <!--
+    </div> -->
+
 <style type="text/css">
-/* LIST VIEW */
-#container .list{
-    width: 100%;
-}
-#container .list li {
-    background: #F9F9F9;
-    margin-bottom: 30px;
-    padding: 20px;
-    list-style-type: none;
-        transition:0.5s all;
-    -webkit-transition:0.5s all;
-    -moz-transition:0.5s all;
-    -o-transition:0.5s all;
-    -ms-transition:0.5s all;
-    box-shadow: 0 0 0.6em #ccc;
-    -webkit-box-shadow: 0 0 0.6em #ccc;
-    -o-box-shadow: 0 0 0.6em #ccc;
-    -moz-box-shadow: 0 0 0.6em #ccc;
-    -ms-box-shadow: 0 0 0.6em #ccc;
-}
-#container .list li:hover {
-    background:#fff;
-    transition:0.5s all;
-    -webkit-transition:0.5s all;
-    -moz-transition:0.5s all;
-    -o-transition:0.5s all;
-    -ms-transition:0.5s all;
-}
-#container .list li img{
-    float: left;
-    margin-right: 0;
-    padding-bottom: 0;
-    border: 1px solid #D1E0EE;
-    padding: 0;
-    width: 20%;
-    background-color: #fff;
-}
-#container ul.list li.alt{ background:gray; }
-#container .list li p {
-    overflow: hidden;
-    word-wrap: break-word;
-    color: #C1C1C1;
-    font-size: 13px;
-    margin-top: 15px;
-}
-#container .list li .title{
-    overflow: hidden;
-    word-wrap: break-word;
-    font-size: 20px;
-    text-decoration: none;
-    color: #000000;
-    font-weight: 500;
-    letter-spacing: 1px;
-}
-#container .list li .adprice{
-    display:block;
-    font-size:22px;
-    display: block;
-    font-size: 22px;
-    color: #ACD3F7;
-    margin: 5px 0 0 0;
-}
-span.adprice {
-    display: block;
-    font-size: 22px;
-    color: rgba(1, 161, 133, 0.57);
-    margin: 5px 0 0 0;
-}
-#container .list li .list-left {
-    width: 60%;
-    margin-left: 3%;
-    float: left;
-}
-#container .list li .list-right{
-    width: 15%;
-    float: right;
-    text-align: right;
-}
-#container .list li .date{
-    float: right;
-    font-size: 14px;
-    display: block;
-    width: 100%;
-    margin: 15px 0 5px 0;
-    color: #404040;
-    font-weight: 400;
-}
-#container .list li .cityname{
-    display:block;
-    color: #404040;
-}
-span.cityname{
-    display:block;
-    color: #404040;
-}
-#container .list li .adprice {
-    display: block;
-    font-size: 22px;
-    color: rgb(245, 2, 0);
-    margin: 10px 0 0 0;
-}
-#container .list li .list-right.title {
-    overflow: hidden;
-    word-wrap: break-word;
-    font-size: 17px;
-    text-decoration: none;
-    color: #0099e5;
-    font-weight: 700;
-}
+    .product-right-grids{
+        border: solid 1px #F3F3F3;
+        margin-bottom: 2em;
+        margin-left: 2em;
+        background-color: whitesmoke;
+    }
+    .p-day{
+        margin:2em 0;
+    }
+    .hotel-price span.p-day-grid{
+        color: #777;
+        font-size: 1em;
+        font-weight: 400;
+    }
+    .p-left{
+        float:left;
+        width:30%;
+    }
+    .p-right{
+        float: left;
+        width: 70%;
+        padding: 1em 0;
+    }
+    .p-right-img a{
+        min-height: 150px;
+        background-size: 150px 150px;
+        display: block;
+    }
 
-/* GRID VIEW */
-#container .grid li {
-    float: left;
-    width: 29.333%;
-    box-shadow: 0 0 0.6em #ccc;
-    -webkit-box-shadow: 0 0 0.3em #E4E4E4;
-    -o-box-shadow: 0 0 0.3em #E4E4E4;
-    -moz-box-shadow: 0 0 0.3em #E4E4E4;
-    -ms-box-shadow: 0 0 0.3em #E4E4E4;
-    margin: 2%;
-    background: #F7F7F7;
-    list-style-type: none;
-}
-#container .grid li img{text-align:center;width:100%;}
-#container .grid li p{display:none;}
-#container .grid li .list-left{text-align:left;font-size:24px;margin-left: 10px;margin-top:10px;}
-#container .grid li .icon-group-btn{font-size:14px;}
-#container .grid li .list-right{    display: block;
-    margin-left: 10px;
-    padding-bottom: 13px;}
-#container .grid li .list-right .date{font-size: 14px;
-    display: block;
-    width: 100%;
-    margin: 15px 0 5px 0;
-    color: #404040;
-    font-weight: 400;}
-#container .grid{
-width: 100%;
-}
-h5.title {
-    overflow: hidden;
-    word-wrap: break-word;
-    font-size: 20px;
-    text-decoration: none;
-    color: #000000;
-    font-weight: 500;
-    letter-spacing: 1px;
-}
-
-/* SWITCH CONTROLS */
-.view-controls-list{
-    width: 20%;
-    text-align: left;
-    margin-bottom: 15px;
-    float: left;
-}
-.view-controls-grid{
-    width: 20%;
-    text-align: left;
-    margin-bottom: 15px;
-    float: left;
-}
-div#viewcontrols label {
-    font-size: 14px;
-    color: #9A9A9A;
-    font-weight: 400;
-}
-#viewcontrols a{
-    padding:5px;
-    color:black;
-    cursor:pointer;
-}
-#viewcontrols a:hover{
-    color:#0099e5;
-}
-#viewcontrols .active{
-    color:#0099e5;
-}
+    .p-right-left a{
+        color: #337ab7;
+        font-size: 1em;
+        font-weight: 600;
+        margin: 0;
+        text-decoration: none;
+        text-transform: capitalize;
+    }
+    .p-right-left p{
+        color: #777;
+        font-size: .9em;
+        margin: .5em 0 0 0;
+        line-height: 1.8em;
+    }
+    .p-right-left p.p-call{
+        font-size: 1.2em;
+        font-weight: 600;
+        color: #000;
+        margin: 0;
+    }
+    .p-right-right{
+        text-align:right;
+    }
+    .p-right-right h6{
+        color: #6fd508;
+        font-weight: 600;
+        font-size: 1.2em;
+        margin: 0;
+    }
+    .p-right-right p{
+        color: #777;
+        font-size: .9em;
+        margin: .5em 0 0 0;
+        line-height: 1.8em;
+    }
+    .p-right-right span.p-offer{
+        color: #000;
+        font-size: 2.3em;
+    }
+    .p-right-right span.p-last-price{
+        text-decoration: line-through;
+        color: #777;
+        font-size: 1.4em;
+        display: block;
+    }
 </style>
 
 -->

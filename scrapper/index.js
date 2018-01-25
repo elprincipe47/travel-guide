@@ -35,6 +35,7 @@ module.exports.extractData = function(html, callback) {
                 var companie_retour =  $(this).children('form').children('div.leg-title.arrival-title').children('table.arrival').children('tbody').children('tr').children('td').children('div.airline-logo').children('img').attr('alt');
                 var aero_arr_arr = $(this).children('form').children('div.leg.clearfix.outbound').children('table.header').children('tbody').children('tr').children('td.arrive.airport').children('div.airport-name');
                 var aero_depart_allee= $(this).children('form').children('div.leg.clearfix.outbound').children('table.header').children('tbody').children('tr').children('td.depart.airport').children('div.airport-name');
+                var lien = "https://www.tripsta.com" +$(this).children('form').attr('action');
 
                 var metadata = {
                     prix: prixo,
@@ -61,17 +62,18 @@ module.exports.extractData = function(html, callback) {
                         aeroport_depart :aero_depart_retour.text().replace(/\s+/g, " ") ,
                         aeroport_arrivee :aero_arriv_retour.text().replace(/\s+/g, " ")
                     },
-                    prix  : prixo
+                    prix  : prixo,
+                     lien  : lien
 
 
                 }
-                if(vol.prix !== " " || vol.prix !== "" || vol.prix !== null )
+                if(prixo !== " " && prixo !== "" && prixo !== null )
                 {
                     nosvols.push(vol);
                 }
 
             })
-     return callback(nosvols.slice(0,10));
+      callback(nosvols.slice(0,10));
     //nosvols.slice(0,10) ;
     //console.log(nosvols);
 

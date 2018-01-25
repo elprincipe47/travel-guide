@@ -36,8 +36,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/api/vol', hassan);
+app.use('/api/heb', hotels);
+
 app.use('/crawl', crawl);
-app.use('/hotels', hotels);
 
 
 
