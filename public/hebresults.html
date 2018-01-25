@@ -1,0 +1,220 @@
+<section class="tour section-wrapper container" style="color:black;">
+    <div class="col-xs-12 col-md-8 " style="align:center;">
+    <div class="panel panel-default " ng-repeat="vol in voles.key">
+
+        <div class="panel-body">
+
+
+                                    <section class="list-left text-center">
+                                    <h4  class="title">{{ vol.allee.aeroport_depart}}  {{ vol.allee.aeroport_arrivee}} </h4>
+                                        <h5>{{ vol.allee.dureevol}}</h5>
+                                    <p class="catpath">vol numéro : {{ vol.allee.numvol }}</p>
+                                        <h5>{{ vol.allee.companie}}</h5>
+
+                                    </section>
+                                  <hr>
+                                <section class="list-left text-center">
+                                    <h4  class="title">{{ vol.retour.aeroport_depart}}  {{ vol.retour.aeroport_arrivee}} </h4>
+                                    <h5>{{ vol.retour.dureevol}}</h5>
+                                    <p class="catpath">vol numéro : {{ vol.retour.numvol }}</p>
+                                    <h5>{{ vol.retour.companie}}</h5>
+
+                                </section>
+
+                                         <div class="panel-footer">
+                                                <h3 class="text-left ">PRIX : {{vol.prix}}</h3>
+                                        <div class="text-right">
+                                            <a  href = "{{vol.lien}}" class="btn btn-default">Réserver</a>
+                                        </div>
+                                        </div>
+                                    <div class="clearfix"></div>
+
+
+        </div>
+
+    </div>
+    </div>
+    <!--
+<style type="text/css">
+/* LIST VIEW */
+#container .list{
+    width: 100%;
+}
+#container .list li {
+    background: #F9F9F9;
+    margin-bottom: 30px;
+    padding: 20px;
+    list-style-type: none;
+        transition:0.5s all;
+    -webkit-transition:0.5s all;
+    -moz-transition:0.5s all;
+    -o-transition:0.5s all;
+    -ms-transition:0.5s all;
+    box-shadow: 0 0 0.6em #ccc;
+    -webkit-box-shadow: 0 0 0.6em #ccc;
+    -o-box-shadow: 0 0 0.6em #ccc;
+    -moz-box-shadow: 0 0 0.6em #ccc;
+    -ms-box-shadow: 0 0 0.6em #ccc;
+}
+#container .list li:hover {
+    background:#fff;
+    transition:0.5s all;
+    -webkit-transition:0.5s all;
+    -moz-transition:0.5s all;
+    -o-transition:0.5s all;
+    -ms-transition:0.5s all;
+}
+#container .list li img{
+    float: left;
+    margin-right: 0;
+    padding-bottom: 0;
+    border: 1px solid #D1E0EE;
+    padding: 0;
+    width: 20%;
+    background-color: #fff;
+}
+#container ul.list li.alt{ background:gray; }
+#container .list li p {
+    overflow: hidden;
+    word-wrap: break-word;
+    color: #C1C1C1;
+    font-size: 13px;
+    margin-top: 15px;
+}
+#container .list li .title{
+    overflow: hidden;
+    word-wrap: break-word;
+    font-size: 20px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+#container .list li .adprice{
+    display:block;
+    font-size:22px;
+    display: block;
+    font-size: 22px;
+    color: #ACD3F7;
+    margin: 5px 0 0 0;
+}
+span.adprice {
+    display: block;
+    font-size: 22px;
+    color: rgba(1, 161, 133, 0.57);
+    margin: 5px 0 0 0;
+}
+#container .list li .list-left {
+    width: 60%;
+    margin-left: 3%;
+    float: left;
+}
+#container .list li .list-right{
+    width: 15%;
+    float: right;
+    text-align: right;
+}
+#container .list li .date{
+    float: right;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    margin: 15px 0 5px 0;
+    color: #404040;
+    font-weight: 400;
+}
+#container .list li .cityname{
+    display:block;
+    color: #404040;
+}
+span.cityname{
+    display:block;
+    color: #404040;
+}
+#container .list li .adprice {
+    display: block;
+    font-size: 22px;
+    color: rgb(245, 2, 0);
+    margin: 10px 0 0 0;
+}
+#container .list li .list-right.title {
+    overflow: hidden;
+    word-wrap: break-word;
+    font-size: 17px;
+    text-decoration: none;
+    color: #0099e5;
+    font-weight: 700;
+}
+
+/* GRID VIEW */
+#container .grid li {
+    float: left;
+    width: 29.333%;
+    box-shadow: 0 0 0.6em #ccc;
+    -webkit-box-shadow: 0 0 0.3em #E4E4E4;
+    -o-box-shadow: 0 0 0.3em #E4E4E4;
+    -moz-box-shadow: 0 0 0.3em #E4E4E4;
+    -ms-box-shadow: 0 0 0.3em #E4E4E4;
+    margin: 2%;
+    background: #F7F7F7;
+    list-style-type: none;
+}
+#container .grid li img{text-align:center;width:100%;}
+#container .grid li p{display:none;}
+#container .grid li .list-left{text-align:left;font-size:24px;margin-left: 10px;margin-top:10px;}
+#container .grid li .icon-group-btn{font-size:14px;}
+#container .grid li .list-right{    display: block;
+    margin-left: 10px;
+    padding-bottom: 13px;}
+#container .grid li .list-right .date{font-size: 14px;
+    display: block;
+    width: 100%;
+    margin: 15px 0 5px 0;
+    color: #404040;
+    font-weight: 400;}
+#container .grid{
+width: 100%;
+}
+h5.title {
+    overflow: hidden;
+    word-wrap: break-word;
+    font-size: 20px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* SWITCH CONTROLS */
+.view-controls-list{
+    width: 20%;
+    text-align: left;
+    margin-bottom: 15px;
+    float: left;
+}
+.view-controls-grid{
+    width: 20%;
+    text-align: left;
+    margin-bottom: 15px;
+    float: left;
+}
+div#viewcontrols label {
+    font-size: 14px;
+    color: #9A9A9A;
+    font-weight: 400;
+}
+#viewcontrols a{
+    padding:5px;
+    color:black;
+    cursor:pointer;
+}
+#viewcontrols a:hover{
+    color:#0099e5;
+}
+#viewcontrols .active{
+    color:#0099e5;
+}
+</style>
+
+-->
+</section>

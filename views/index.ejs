@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- <link rel="stylesheet"  href="https://bootswatch.com/4/superhero/bootstrap.min.css"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-collapse.js"></script>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+    <!--  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="/assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/css/owl.theme.css">
+    <link rel="stylesheet" href="/assets/css/flexslider.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+
+  </head>
+  <body>
+  <style>
+    body  {
+     /* background-image: url("https://resonance.is/wp-content/uploads/Travel-Tips.jpg");*/
+      background-image: url("https://i.pinimg.com/originals/f5/57/bd/f557bd634ce32b3fe6d1c54272f2bfe4.jpg");
+      background-color: #cccccc;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: auto; /* you can use % */
+      height: auto;
+    }
+  </style>
+  <div ng-app="myApp">
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html" title="HOME"><i class="ion-paper-airplane"></i> euro <span>travel</span></a>
+      </div> <!-- /.navbar-header -->
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li ><a href="#/">Home</a></li>
+          <li><a href="#/voles">voles</a></li>
+          <li><a href="services.html">services</a></li>
+          <li><a href="contact.html">contact</a></li>
+        </ul> <!-- /.nav -->
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+  <div><br><br><br><br></div>
+  <!-- Find a Tour -->
+    <div ng-view>
+
+
+
+  </div>
+    </div>
+<!--
+  <h1><%= title %></h1>
+
+    <p>Welcome to <%= title %></p>
+-->
+  <!--
+    <h1>mrehbaa</h1>
+    <form name="form1" method="POST" action="/hassan">
+      <table>
+        <tr>
+          <td>ville de départ</td>
+          <td><input type="text" name="vdepart" ></td>
+        </tr>
+        <tr>
+          <td>ville d'arrivee</td>
+          <td><input type="text" name="varrive" ></td>
+        </tr>
+        <tr>
+
+
+        <tr>
+          <td colspan="2"><input type="submit" value="Save" ></td>
+        </tr>
+      </table>
+    </form>
+-->
+
+  </body>
+<script>
+    var app = angular.module('myApp', ['ngRoute']);
+    app.config(function ($routeProvider) {
+        $routeProvider.when('/', {
+            templateUrl: '/formvol.html',
+            controller: 'formvol'
+
+        }).when('/voles', {
+            templateUrl: '/vols.html',
+            controller: 'afficherVoles'
+
+        })
+    });
+    app.controller('formvol', function($scope, $http,$location,Model) {
+     //   $scope.vols={};
+        $scope.villes=new Array;
+        $http.get("/airports.json").success(function (response)
+        {
+            $scope.villes = response.koko ;
+           // $scope.list = $scope.villes;
+
+        });
+      //  console.log(villes);
+        $scope.submitVol = function() {
+            $http.post("/api/vol", $scope.vol).success(function (response) {
+
+
+                Model.setVoles(response);
+                console.log(response);
+                window.location.href="#/voles";
+
+            });
+        };
+    });
+    app.controller('afficherVoles', function($scope, $http,$location,Model) {
+
+        $scope.$watch(function ()
+        {
+          //  return Data.getFirstName();
+            $scope.voles = Model.getVoles();
+        });
+    });
+
+    app.factory('Model', function () {
+
+        var data = {
+            voles: ''
+        };
+
+        return {
+            getVoles: function () {
+                return data.voles;
+            },
+            setVoles: function (voles) {
+                data.voles= voles;
+            }
+        };
+    });
+
+</script>
+
+
+</html>

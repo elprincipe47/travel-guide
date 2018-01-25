@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<section class="tour section-wrapper container" >
+    <form ng-submit="submitVol()">
+        <h2 class="" style="color:black">choose your flight</h2>
+        <br>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="input-group">
+                    <input type="text"  ng-model ="vol.depart" name="depart" class="form-control border-radius border-right" placeholder="De" list = "cities" />
+                   <datalist id="cities">
+                       <option ng-repeat="x in villes" value="{{x.city}}">{{x.city}} {{x.name}}({{x.country}})</option>
+
+                   </datalist>
+                    <span class="input-group-addon border-radius custom-addon">
+                <i class="ion-ios-calendar"></i>
+              </span>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="input-group">
+                    <input type="text" ng-model = "vol.arrive" name="arrive" class="form-control border-radius border-right" placeholder="A" list = "cities" />
+
+                    <span class="input-group-addon border-radius custom-addon">
+						<i class="ion-ios-calendar"></i>
+					</span>
+                </div>
+            </div>
+        <!--
+                        <div><br><br><br><br>
+                            <div class="col-md-3 col-sm-6">
+                                <div class='input-group date' class='datepicker'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+                                </div>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="form-group">
+                                    <div class='input-group date' id='datetimepicker1'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                </div>
+                            </div>
+     -->
+            <div> <br><br><br><br>
+                <div class="col-md-3 col-sm-6">
+                    <div class="input-group">
+                        <input type="text" ng-model = "vol.date_depart" name="date_depart" class="form-control border-radius border-right" placeholder="Date de Départ"  />
+                        <span class="input-group-addon border-radius custom-addon">
+						<i class="ion-ios-calendar"></i>
+					</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="input-group">
+                        <input type="text" ng-model = "vol.date_arrive" name="date_arrive" class="form-control border-radius border-right" placeholder="Date de D'arrivée"  />
+                        <span class="input-group-addon border-radius custom-addon">
+						<i class="ion-ios-calendar"></i>
+					</span>
+                    </div>
+                </div>
+                <script type="text/javascript">
+
+                </script>
+            </div>
+                <div> <br><br><br><br>
+                    <div class="col-md-3 col-sm-6">
+                        <button type="submit" class="btn btn btn-success">Afficher les vols</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+
+</section>
